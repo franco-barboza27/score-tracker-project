@@ -31,22 +31,23 @@ def arithmetic_game():
 
 def num_guessing():
     user_mistakes = 0
-    print('A number will be chosen (within a certain range), and you have to guess it in the least amount of guesses possible. \nIf you type a number that is out of range, nothing will be added to your "mistake" counter')
+    print('A number will be chosen (within a certain range), and you have to guess it in the least amount of guesses possible. \nIf you type a number that is out of range, nothing will be added to your "guess" counter')
 
     while True:
-        difficulty = input("Do you want to play on easy(1-10) or hard(1-100)?: ")
+        difficulty = input("\nDo you want to play on easy(1-10) or hard(1-100)?: ")
         if difficulty.strip().lower() == "easy" or difficulty.strip().lower() == "hard":
+                difficulty = difficulty.strip().lower()
                 break
         else:
             print("That isn't an option!")
 
-    if difficulty.strip().lower() == "easy":
-            answer = random.randint(1, 10)
-    elif difficulty.strip().lower() == "hard":
+    if difficulty == "easy":
+        answer = random.randint(1, 10)
+    elif difficulty == "hard":
         answer = random.randint(1, 100)
 
     while True:
-        user_guess = input("Type your guess: ")
+        user_guess = input("\nType your guess: ")
         if not user_guess.isnumeric():
             print("That's not a number.")
         else:
@@ -54,5 +55,21 @@ def num_guessing():
         
         if user_guess < 1:
             print("That is out of range.")
-        elif user_guess > 10 and difficulty == "easy".strip().lower():
-            
+        elif user_guess > 10 and difficulty == "easy":
+            print("That is out of range.")
+        elif user_guess < 100 and difficulty == "hard":
+            print("That is out of range.")
+        else:
+            if user_guess == answer:
+                print("You're correct! Good job.")
+                break
+            else:
+                print("wrong lol")
+                user_mistakes += 1
+                if user_guess < answer:
+                    print("The number is HIGHER than your guess.")
+                elif user_guess > answer:
+                    print("The number is LOWER than your guess.")
+    
+    print(f"Good job! You made {user_mistakes} guesses.")
+    return user_mistakes
