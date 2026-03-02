@@ -26,12 +26,14 @@ def arithmetic_game():
             chosen_operation = random.choice(operations)
             chosen_operation = chr(chosen_operation)
 
-            print(type(chosen_operation))
+            equation = str(first_num) + " " + chosen_operation + " " + str(second_num)
             break
+
+arithmetic_game()
 
 def num_guessing():
     user_mistakes = 0
-    print('A number will be chosen (within a certain range), and you have to guess it in the least amount of guesses possible. \nIf you type a number that is out of range, nothing will be added to your "guess" counter')
+    print('A number will be chosen (within a certain range), and you have to guess it in the least amount of guesses possible. \nIf you type a number that is out of range, nothing will be added to your "guess" counter.')
 
     while True:
         difficulty = input("\nDo you want to play on easy(1-10) or hard(1-100)?: ")
