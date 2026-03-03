@@ -6,7 +6,7 @@ def arithmetic_game():
     user_score = 0
     operations = [42, 43, 45, 47]         #ascii codes for *, +, -, and /
 
-    print("For this game, an equation (addition, subtraction, division, or multiplication) will show up. Type the answer to the question (as a number). \nYou get 3 lives, and lose one every time you make a mistake. Get the highest score you can!")
+    print("For this game, an equation (addition, subtraction, division, or multiplication) will show up. Type the answer to the question (as a number).\nThere will be no decimals as an answer. \nYou get 3 lives, and lose one every time you make a mistake (It will not count if you type in a non-number). Get the highest score you can!")
 
     while True:
         difficulty = input("Do you want to play on easy(0 to 100) or hard (-100 to 100) mode?: ")
@@ -16,20 +16,49 @@ def arithmetic_game():
              print("That isn't an option!")
 
     while True:
-            if difficulty.strip().lower() == "easy":
-                first_num = random.randint(0, 100)
-                second_num = random.randint(0, 100)
-            elif difficulty.strip().lower() == "hard":
-                first_num = random.randint(-100, 100)
-                second_num = random.randint(-100, 100)
+            while True:
+                if difficulty.strip().lower() == "easy":
+                    first_num = random.randint(0, 100)
+                    second_num = random.randint(0, 100)
+                elif difficulty.strip().lower() == "hard":
+                    first_num = random.randint(-100, 100)
+                    second_num = random.randint(-100, 100)
+                
+                chosen_operation = random.choice(operations)
+                chosen_operation = chr(chosen_operation)
+
+                equation = str(first_num) + " " + chosen_operation + " " + str(second_num)
+                answer = eval(equation)
+                if isinstance(answer, int):  #making sure it's not a float.
+                    break
             
-            chosen_operation = random.choice(operations)
-            chosen_operation = chr(chosen_operation)
+            print(f"\n{equation}")
+            while True: #failsafe incase user types in a non-number
+                user_guess = input("Answer: ")
+                if not user_guess.isnumeric():
+                    print("That isn't a number. Please try again.")
+                else:
+                    user_guess = int(user_guess)
+                    break
 
-            equation = str(first_num) + " " + chosen_operation + " " + str(second_num)
-            break
+            if user_guess == answer:
+                print("That's correct!")
+                user_score += 1
+                print(f"Your score is now {user_score}.")
+            elif user_guess != answer:
+                print("That's incorrect!")
+                print(f"The answer was: {answer}")
+                user_lives -= 1
+                print(f"You now have {user_lives} lives left.")
 
-arithmetic_game()
+            #check if user_lives is 0
+            if user_lives <= 0:
+                print("You lost...")
+                break
+
+    print(f"Your final score is: {user_score}. Good job!")
+    return user_score
+
 
 def num_guessing():
     user_mistakes = 0
