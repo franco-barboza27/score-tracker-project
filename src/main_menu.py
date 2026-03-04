@@ -1,7 +1,6 @@
 #simple main menu
 
-from math_games import arithmetic_game
-from math_games import num_guessing
+from math_games import arithmetic_game, num_guessing
 from tictactoe import tic_tac
 
 def main():
