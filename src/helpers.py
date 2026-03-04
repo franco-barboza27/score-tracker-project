@@ -1,5 +1,6 @@
 import re
 import time
+import random as rand
 
 def check_password(password):
     print("\nLet's check the strength of your password.")
@@ -61,5 +62,29 @@ def check_password(password):
         print("Your password is very strong!!! Good job :D")
 
 
-test = input("password here: ")
-check_password(test)
+def rps_results(user_play, comp_play, graphics):
+    end = ""
+    index = 0
+    p_str = ""
+    while index < len(graphics[user_play.lower()]):
+        print(graphics[user_play.lower()][index] + "   " + graphics["v.s."][index] + "   " + graphics[comp_play.lower()][index])
+        index += 1
+        
+        print(p_str)
+
+        time.sleep(1)
+
+        index = 0
+
+    while index < len(graphics["you_tie"]):
+        print(graphics[user_play.lower()][index] + "   " + graphics["you_tie"][index])
+        index += 1
+        
+        print(p_str)
+
+        index = 0
+
+    while index < len(graphics["you_lose"]):
+              print(graphics["dead_moai"][index] + "   " + graphics["you_lose"][index])
+              index += 1
+            
