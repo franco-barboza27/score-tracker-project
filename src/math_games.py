@@ -6,10 +6,11 @@ def arithmetic_game():
     user_score = 0
     operations = [42, 43, 45, 47]         #ascii codes for *, +, -, and /
 
-    print("For this game, an equation (addition, subtraction, division, or multiplication) will show up. Type the answer to the question (as a number).\nThere will be no decimals as an answer. \nYou get 3 lives, and lose one every time you make a mistake (It will not count if you type in a non-number). Get the highest score you can!")
+    print("For this game, an equation (addition, subtraction, division, or multiplication) will show up. Type the answer to the question (as a number).\nThere will be no decimals as an answer. \nYou get 3 lives, and lose one every time you make a mistake (It will not count if you type in a non-number). \nAsterisks(*) represent multiplication and forward slashes(/) represent division. \nGet the highest score you can!")
 
     while True:
-        difficulty = input("Do you want to play on easy(0 to 100) or hard (-100 to 100) mode?: ")
+        print("\nThere is a difficulty of easy(range of 0 to 100) and hard(range of -100 to 100) mode.")
+        difficulty = input('What difficutly do you want to play on?(type in "easy" or "hard"): ')
         if difficulty.strip().lower() == "easy" or difficulty.strip().lower() == "hard":
             break
         else:
@@ -35,10 +36,11 @@ def arithmetic_game():
             print(f"\n{equation}")
             while True: #failsafe incase user types in a non-number
                 user_guess = input("Answer: ")
-                if not user_guess.isnumeric():
-                    print("That isn't a number. Please try again.")
-                else:
+                try:
                     user_guess = int(user_guess)
+                except:
+                    print("That is not a number. Please try again.")
+                else:
                     break
 
             if user_guess == answer:
@@ -53,7 +55,7 @@ def arithmetic_game():
 
             #check if user_lives is 0
             if user_lives <= 0:
-                print("You lost...")
+                print("\nYou lost...")
                 break
 
     print(f"Your final score is: {user_score}. Good job!")
@@ -65,7 +67,8 @@ def num_guessing():
     print('A number will be chosen (within a certain range), and you have to guess it in the least amount of guesses possible. \nIf you type a number that is out of range, nothing will be added to your "guess" counter.')
 
     while True:
-        difficulty = input("\nDo you want to play on easy(1-10) or hard(1-100)?: ")
+        print("\nThere is an easy(range of 1-10) and hard(range of 1-100) mode.")
+        difficulty = input('What difficulty do you want to play on?(type in "easy" or "hard"): ')
         if difficulty.strip().lower() == "easy" or difficulty.strip().lower() == "hard":
                 difficulty = difficulty.strip().lower()
                 break
@@ -88,7 +91,7 @@ def num_guessing():
             print("That is out of range.")
         elif user_guess > 10 and difficulty == "easy":
             print("That is out of range.")
-        elif user_guess < 100 and difficulty == "hard":
+        elif user_guess > 100 and difficulty == "hard":
             print("That is out of range.")
         else:
             if user_guess == answer:
@@ -104,3 +107,5 @@ def num_guessing():
     
     print(f"Good job! You made {user_mistakes} guesses.")
     return user_mistakes
+
+num_guessing()
