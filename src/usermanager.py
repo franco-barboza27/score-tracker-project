@@ -1,40 +1,73 @@
 import hashlib
 import helpers
+import main_menu as menu
+
 
 def signup(users):
-    valid = []
+   valid = []
 
-    username = input("What will your username be?")
 
-    for user in users:
-        if username == user["username"]:
-            print("That name already exists!")
-            valid.append(False)
-        else:
-            print("That name is available!")
-            valid.append(True)
+   username = input("What will your username be?")
 
-    while True:
-        password = input("What is your password?")
 
-        check = helpers.passwordstrength(password)
+   checker = True
+  
+   while checker:
+       if users:
+           for user in users:
+               if user["username"] == username:
+                   print("That name already exists!")
+                   valid.append(False)
+               else:
+                   print("That name is available!")
+                   valid.append(True)
+                   checker = False
+       else:
+           valid.append(True)
+           checker = False
 
-        if check == True:
-            valid.append(True)
-            break
-        else:
-            continue
-        
-    
-    for check in valid:
-        if check == False:
-            print("This is an invalid password or username.")
-            return False
-        else:
-            print()
-        
+
+   while True:
+       while True:
+           password = input("What is your password?")
+           check = helpers.check_password(password)
+           if check == True:
+               break
+
+
+       if check == True:
+           valid.append(True)
+           password = password.encode("UTF-8")
+           hashvers = hashlib.sha256()
+           hashvers.update(password)
+           hashvers.update(f"{username[-1]}{username[-2]}{username[-3]}".encode("UTF-8"))
+           hashvers.digest()
+           break
+       else:
+           continue
+  
+   users.append({"username":username, "password":password, "scores":{"easy arithmetic score":0, "easy guessing score":0, "hard arithmetic score":0, "hard guessing score":0, "tictactoe score":0, "rock paper scissors":0}})
+  
+   return True, username, password
+      
 def login(users):
-    valid = []
-    for check in valid:
-        if check == False:
-            pass
+   valid = []
+
+
+   username = input("What is your username?")
+   password = input("What is your password?")
+
+
+   for user in users:
+       if user["username"] == username:
+           password = password.encode("UTF-8")
+           passing = hashlib.sha256(password)
+           passing.update(f"{username[-1]}{username[-2]}{username[-3]}".encode("UTF-8"))
+
+
+           if user["password"] == passing.digest():
+               print("Successfully logging you in!")
+               menu.main(user, users)
+  
+   print("Unfortunately, either your password or your username are wrong")
+
