@@ -1,4 +1,4 @@
-"""import random as rand
+import random as rand
 import time as t
 from helpers import rps_results
 
@@ -32,7 +32,7 @@ p_str = ""
 user_shoot = input(f"Rock, Paper, or Scissors?: \n")
 comp_shoot = rand.choice(["r", "p", "s"])
 print("SHOOT!")
-rps_results(user_shoot, comp_shoot, newline_workaround)"""
+rps_results(user_shoot, comp_shoot, newline_workaround)
 
 """while True:
     
