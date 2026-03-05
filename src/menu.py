@@ -2,8 +2,9 @@
 
 from math_games import arithmetic_game, num_guessing
 from tictactoe import tic_tac
+import rps
 
-def main():
+def mainmenu(user, users):
     print("Welcome to the High Score Tracker!\nWhere you can play games such as tic-tac-toe, and much more!\nOnce you're done, you can check your score, and try to beat it!")
     while True:
         try:
@@ -13,7 +14,7 @@ def main():
             elif choice == 2:
                 num_guessing()
             elif choice == 3:
-                tic_tac()
+                print("Tic Tac Toe coming soon")
             elif choice == 4:
                 print("Rock Paper Scissors coming soon")
             elif choice == 5:

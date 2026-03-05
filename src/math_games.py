@@ -108,13 +108,3 @@ def num_guessing():
     
     print(f"Good job! You made {user_mistakes} guesses.")
     return user_mistakes
-
-print("First game.\n")
-time.sleep(0.5)
-arithmetic_game()
-
-time.sleep(1)
-
-print("Second game.\n")
-time.sleep(0.5)
-num_guessing()
