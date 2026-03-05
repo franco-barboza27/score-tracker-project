@@ -29,7 +29,7 @@ def signup(users):
 
     while True:
         while True:
-            password = input("What is your password?")
+            password = input("What will your password be?")
             check = helpers.check_password(password)
             if check == True:
                 break
@@ -71,4 +71,3 @@ def login(users):
                menu.mainmenu(user, users)
   
    print("Unfortunately, either your password or your username are wrong")
-
