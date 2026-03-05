@@ -2,7 +2,7 @@
 
 from math_games import arithmetic_game, num_guessing
 from tictactoe import tic_tac
-import rps
+from helpers import rps_results
 
 def mainmenu(user, users):
     print("Welcome to the High Score Tracker!\nWhere you can play games such as tic-tac-toe, and much more!\nOnce you're done, you can check your score, and try to beat it!")
