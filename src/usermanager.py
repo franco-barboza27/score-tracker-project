@@ -1,54 +1,55 @@
 import hashlib
 import helpers
-import main_menu as menu
+import menu
 
 
 def signup(users):
-   valid = []
+    valid = []
 
 
-   username = input("What will your username be?")
+    username = input("What will your username be?")
 
 
-   checker = True
+    checker = True
   
-   while checker:
-       if users:
-           for user in users:
-               if user["username"] == username:
-                   print("That name already exists!")
-                   valid.append(False)
-               else:
-                   print("That name is available!")
-                   valid.append(True)
-                   checker = False
-       else:
-           valid.append(True)
-           checker = False
+    while checker:
+        if users:
+            for user in users:
+                if user["username"] == username:
+                    print("That name already exists!")
+                    valid.append(False)
+                else:
+                    print("That name is available!")
+                    valid.append(True)
+                    checker = False
+        else:
+            valid.append(True)
+            checker = False
 
 
-   while True:
-       while True:
-           password = input("What is your password?")
-           check = helpers.check_password(password)
-           if check == True:
-               break
+    while True:
+        while True:
+            password = input("What is your password?")
+            check = helpers.check_password(password)
+            if check == True:
+                break
 
 
-       if check == True:
-           valid.append(True)
-           password = password.encode("UTF-8")
-           hashvers = hashlib.sha256()
-           hashvers.update(password)
-           hashvers.update(f"{username[-1]}{username[-2]}{username[-3]}".encode("UTF-8"))
-           hashvers.digest()
-           break
-       else:
-           continue
+        if check == True:
+            valid.append(True)
+            password = password.encode("UTF-8")
+            hashvers = hashlib.sha256()
+            hashvers.update(password)
+            hashvers.update(f"{username[-1]}{username[-2]}{username[-3]}".encode("UTF-8"))
+            hashvers.digest()
+            break
+        else:
+            continue
+
+    user = {"username":username, "password":password, "scores":{"easy arithmetic score":0, "easy guessing score":0, "hard arithmetic score":0, "hard guessing score":0, "tictactoe score":0, "rock paper scissors":0}}
+    users.append(user)
   
-   users.append({"username":username, "password":password, "scores":{"easy arithmetic score":0, "easy guessing score":0, "hard arithmetic score":0, "hard guessing score":0, "tictactoe score":0, "rock paper scissors":0}})
-  
-   return True, username, password
+    menu.mainmenu(user, users)
       
 def login(users):
    valid = []
@@ -67,7 +68,7 @@ def login(users):
 
            if user["password"] == passing.digest():
                print("Successfully logging you in!")
-               menu.main(user, users)
+               menu.mainmenu(user, users)
   
    print("Unfortunately, either your password or your username are wrong")
 

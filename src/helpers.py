@@ -60,6 +60,7 @@ def check_password(password):
         print("Your password is strong.")
     elif score == 5:
         print("Your password is very strong!!! Good job :D")
+        return True
 
 
 def rps_results(user_play, comp_play, graphics):
