@@ -1,8 +1,8 @@
 #VY 2nd Math Games for High Score Tracker
 import random
-import time
+import helpers
 
-def arithmetic_game():
+def arithmetic_game(user):
     user_lives = 3
     user_score = 0
     operations = [42, 43, 45, 47]         #ascii codes for *, +, -, and /
@@ -10,21 +10,23 @@ def arithmetic_game():
     print("For this game, an equation (addition, subtraction, division, or multiplication) will show up. Type the answer to the question (as a number).\nThere will be no decimals as an answer. \nYou get 3 lives, and lose one every time you make a mistake (It will not count if you type in a non-number). \nAsterisks(*) represent multiplication and forward slashes(/) represent division. \nGet the highest score you can!")
 
     while True:
-        print("\nThere is a difficulty of easy(range of 0 to 100) and hard(range of -100 to 100) mode.")
+        print("\nThere is a difficulty of easy(range of 0 to 50) and hard(range of -50 to 50) mode.")
         difficulty = input('What difficutly do you want to play on?(type in "easy" or "hard"): ')
         if difficulty.strip().lower() == "easy" or difficulty.strip().lower() == "hard":
             break
         else:
              print("That isn't an option!")
+            
+    type_game = difficulty + " arithmetic game"
 
     while True:
             while True:
                 if difficulty.strip().lower() == "easy":
-                    first_num = random.randint(0, 100)
-                    second_num = random.randint(0, 100)
+                    first_num = random.randint(0, 50)
+                    second_num = random.randint(0, 50)
                 elif difficulty.strip().lower() == "hard":
-                    first_num = random.randint(-100, 100)
-                    second_num = random.randint(-100, 100)
+                    first_num = random.randint(-50, 50)
+                    second_num = random.randint(-50, 50)
                 
                 chosen_operation = random.choice(operations)
                 chosen_operation = chr(chosen_operation)
@@ -55,12 +57,12 @@ def arithmetic_game():
                 print(f"You now have {user_lives} lives left.")
 
             #check if user_lives is 0
-            if user_lives <= 0:
-                print("\nYou lost...")
-                break
-
-    print(f"Your final score is: {user_score}. Good job!")
-    return user_score
+            end = helpers.check_health(user_lives, user_score)
+            if end == "lost":
+                compare_score = helpers.check_score(user, user_score, type_game)
+                if compare_score == "greater":
+                    user["scores"].update({type_game: user_score})
+                    return user
 
 
 def num_guessing():
