@@ -64,9 +64,6 @@ def check_password(password):
 
 
 def rps_results(user_play, comp_play, graphics):
-    user_points = 0
-    user_lives = 3
-    end = ""
     index = 0
     p_str = ""
     user_play = user_play.lower().strip()
@@ -88,7 +85,7 @@ def rps_results(user_play, comp_play, graphics):
             index += 1
         print(p_str)
         index = 0
-        return "tie"
+        return None
     
     elif user_to_comp in possible_combinations:
         while index < len(graphics["you_win"]):
@@ -102,3 +99,16 @@ def rps_results(user_play, comp_play, graphics):
         index += 1
         return "comp"
             
+
+def check_health(user_health, user_points):
+    if user_health <= 0:
+        print("Game over!")
+        print(f"Your final score is {user_points} points.")
+        return "lost"
+    return "cont"
+
+def check_score(user, user_points, game):
+    if user_points > user["scores"][game]:
+        return "greater"
+    else:
+        return "less"
