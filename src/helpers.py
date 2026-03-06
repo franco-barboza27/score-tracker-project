@@ -1,6 +1,5 @@
 import re
 import time
-import random as rand
 
 def check_password(password):
     print("\nLet's check the strength of your password.")

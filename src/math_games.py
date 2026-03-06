@@ -65,18 +65,22 @@ def arithmetic_game(user):
                     return user
 
 
-def num_guessing():
+def num_guessing(user):
     user_mistakes = 0
+    type_game = ""
+
     print('A number will be chosen (within a certain range), and you have to guess it in the least amount of guesses possible. \nIf you type a number that is out of range, nothing will be added to your "guess" counter.')
 
     while True:
         print("\nThere is an easy(range of 1-10) and hard(range of 1-100) mode.")
         difficulty = input('What difficulty do you want to play on?(type in "easy" or "hard"): ')
         if difficulty.strip().lower() == "easy" or difficulty.strip().lower() == "hard":
-                difficulty = difficulty.strip().lower()
-                break
+            difficulty = difficulty.strip().lower()
+            break
         else:
             print("That isn't an option!")
+
+    type_game = difficulty + " guessing score"
 
     if difficulty == "easy":
         answer = random.randint(1, 10)
@@ -108,5 +112,8 @@ def num_guessing():
                 elif user_guess > answer:
                     print("The number is LOWER than your guess.")
     
+    compare_score = helpers.check_score(user, user_mistakes, type_game)
+    if compare_score == "less":
+        user["scores"].update({type_game: user_mistakes})
     print(f"Good job! You made {user_mistakes} guesses.")
-    return user_mistakes
+    return user
