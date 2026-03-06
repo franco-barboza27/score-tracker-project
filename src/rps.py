@@ -55,5 +55,4 @@ def rps_game(user):
     if continue_game == "lost":
       if user_score > user["scores"]["rock paper scissors"]:
         user["scores"].update({"rock paper scissors": user_score})
-        return user["scores"]["rock paper scissors"]
-      break
+        return user
