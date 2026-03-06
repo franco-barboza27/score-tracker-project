@@ -1,7 +1,6 @@
 #simple main menu
 
 from math_games import arithmetic_game, num_guessing
-from tictactoe import tic_tac
 import rps
 from main import mainplace
 
@@ -15,7 +14,8 @@ def mainmenu(user, users):
             elif choice == 2:
                 num_guessing()
             elif choice == 3:
-                tic_tac()
+                from tictactoe import play
+                play()
             elif choice == 4:
                 print("Rock Paper Scissors coming soon")
             elif choice == 5:
@@ -23,3 +23,4 @@ def mainmenu(user, users):
                 break
         except ValueError:
             print("That ain't something you can do!")
+mainmenu()
