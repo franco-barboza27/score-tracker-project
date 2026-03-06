@@ -30,20 +30,31 @@ def computer(c_letter):
     else:
         pass
 
+def scores(pletter, cletter, sc):
+    if win_conditions(pletter):
+        print("Your score went up one!")
+        sc += 1
+    if win_conditions(cletter):
+        if sc < 0:
+            sc -= 1
+        else:
+            print("Your score stayed at zero!")
+
 def play():
+    score = 0
     print("Welcome to Tic-Tac-Toe!")
-    letter = input("What is the letter that you want to be?\nIt can be X or O, but it could also be anything else\nType Here:")
-    comp_letter = input("What is the letter that you would like the computer to be?\n")
+    letter = input("What is the letter that you want to be?\nIt can be X or O, but it could also be anything else\nType Here:   ")
+    comp_letter = input("What is the letter that you would like the computer to be?\n Type Here:   ")
     print_board()
     while True:
         try:
-            placement = int(input("Now, where would you like to play?"))
+            placement = int(input("Now, where would you like to play?\nType Here:   "))
             if placement in range(9) and isinstance(board[placement], int):
                 board[placement] = letter
                 print_board()
 
                 if win_conditions(letter):
-                    print("Elite! You won!")
+                    print("Elite! You won against the computer!")
                     break
 
                 if tie():
@@ -63,5 +74,5 @@ def play():
                 print("That ain't somewhere you can place bruh!")
         except ValueError:
             print("That ain't somewhere you can place!")
-
+    scores(letter, comp_letter, score)
 play()
