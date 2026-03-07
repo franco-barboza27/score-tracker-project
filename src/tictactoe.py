@@ -40,7 +40,7 @@ def scores(pletter, cletter, sc):
         else:
             print("Your score stayed at zero!")
 
-def play():
+def play_ttt():
     score = 0
     print("Welcome to Tic-Tac-Toe!")
     letter = input("What is the letter that you want to be?\nIt can be X or O, but it could also be anything else\nType Here:   ")
