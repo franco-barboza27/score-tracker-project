@@ -28,4 +28,3 @@ def mainmenu(user, users):
                     break
         except ValueError:
             print("That ain't something you can do!")
-mainmenu()
