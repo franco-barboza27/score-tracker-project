@@ -29,16 +29,6 @@ def computer(c_letter):
     else:
         pass
 
-def scores(pletter, cletter, sc):
-    if win_conditions(pletter):
-        print("Your score went up one!")
-        sc += 1
-    if win_conditions(cletter):
-        if sc < 0:
-            sc -= 1
-        else:
-            print("Your score stayed at zero!")
-
 def play_ttt():
     score = 0
     print("Welcome to Tic-Tac-Toe!")
@@ -73,4 +63,3 @@ def play_ttt():
                 print("That ain't somewhere you can place bruh!")
         except ValueError:
             print("That ain't somewhere you can place!")
-    scores(letter, comp_letter, score)

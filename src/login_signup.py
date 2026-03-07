@@ -12,6 +12,11 @@ def signup(users):
         username = input("What will your username be?")
         if users:
             for user in users:
+                if len(username) <=3:
+                    print("That name is too short!")
+                    valid.append(False)
+                    break
+
                 if user["username"] == username:
                     print("That name already exists!")
                     valid.append(False)
@@ -39,7 +44,7 @@ def signup(users):
             password = password.encode("UTF-8")
             hashvers = hashlib.sha256(password)
             hashvers.update(f"{username[-1]}{username[-2]}{username[-3]}".encode("UTF-8"))
-            hashvers.digest()
+            hashvers = str(hashvers.hexdigest())
             break
         else:
             continue
@@ -60,9 +65,10 @@ def login(users):
            password = password.encode("UTF-8")
            passing = hashlib.sha256(password)
            passing.update(f"{username[-1]}{username[-2]}{username[-3]}".encode("UTF-8"))
+           passing = str(passing.hexdigest())
 
 
-           if user["password"].hexdigest() == passing.hexdigest():
+           if user["password"] == passing:
                print("Successfully logging you in!")
                menu.mainmenu(user, users)
   

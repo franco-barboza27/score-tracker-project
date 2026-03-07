@@ -140,9 +140,9 @@ def display_leaderboard(users, type_game):
     print(f"Top 10 scores for {type_game}")
     for i in range(10):
         try:
-            print(f"{usernames[i]}: {scores[i]}")
+            print(f"{i + 1}. {usernames[i]}: {scores[i]}")
         except:
-            print(f"{i}. There is no user in this spot.")
+            print(f"{i + 1}. There is no user in this spot.")
 
 """test_users = [
     {"username":"OMORI", "password":"Wh!tesp@c3", "scores":{"easy arithmetic score":19, "easy guessing score":1, "hard arithmetic score":13, "hard guessing score":5, "tictactoe score":6, "rock paper scissors":100}},

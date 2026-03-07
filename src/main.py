@@ -25,4 +25,8 @@ def mainplace(userbase):
 users = csvsetup.userget()
 users = csvsetup.scoreget(users)
 
+for user in users:
+    for score in user["scores"]:
+        user["scores"][score] = int(user["scores"][score])
+
 mainplace(users)

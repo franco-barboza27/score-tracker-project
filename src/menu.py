@@ -13,13 +13,13 @@ def mainmenu(user, users):
             choice = int(input("Type Here(1/2/3/etc): "))
             match choice:
                 case 1:
-                    arithmetic_game()
+                    arithmetic_game(user)
                 case 2:
-                    num_guessing()
+                    num_guessing(user)
                 case 3:
                     play_ttt()
                 case 4:
-                    rps_game()
+                    rps_game(user)
                 case 5:
                     games = ["easy arithmetic score", "easy guessing score", "hard arithmetic score", "hard guessing score", "rock paper scissors score"]
                     gamedict = {}

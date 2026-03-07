@@ -17,7 +17,7 @@ def arithmetic_game(user):
         else:
              print("That isn't an option!")
             
-    type_game = difficulty + " arithmetic game"
+    type_game = difficulty + " arithmetic score"
 
     while True:
             while True:
@@ -63,7 +63,6 @@ def arithmetic_game(user):
                 if compare_score == "greater":
                     user["scores"].update({type_game: user_score})
                     return user
-
 
 def num_guessing(user):
     user_mistakes = 0
