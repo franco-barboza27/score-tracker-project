@@ -2,7 +2,7 @@ import re
 import time
 
 def check_password(password):
-    print("\nLet's check the strength of your password.")
+    print("\nLet's check the strength of your password. (NOTE: In order for your password to be accepted, it needs ot recieve a strength score of 5.)")
     score = 0
 
     print("Checking password now...\n")

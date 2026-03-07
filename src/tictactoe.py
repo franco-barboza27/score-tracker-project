@@ -75,4 +75,3 @@ def play():
         except ValueError:
             print("That ain't somewhere you can place!")
     scores(letter, comp_letter, score)
-play()
