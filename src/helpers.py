@@ -1,6 +1,21 @@
 import re
 import time
 
+def inputchecker(rangeofchoices):
+    while True:
+            choicevar = input(f"Which one would you like to choose?(1~{rangeofchoices}):\n")
+            try:
+                choicevar = int(choicevar)
+                if choicevar in range(1, rangeofchoices+1):
+                    break
+                else:
+                    print("That's not an option :(")
+                    continue
+            except:
+                    continue
+           
+    return choicevar
+
 def check_password(password):
     print("\nLet's check the strength of your password. (NOTE: In order for your password to be accepted, it needs ot recieve a strength score of 5.)")
     score = 0
@@ -59,8 +74,6 @@ def check_password(password):
         print("Your password is very strong!!! Good job :D")
         return True
 
-
-
 def rps_results(user_play, comp_play, graphics):
     index = 0
     p_str = ""
@@ -96,8 +109,6 @@ def rps_results(user_play, comp_play, graphics):
             print(graphics["dead_"+user_play][index] + "   " + graphics["you_lose"][index])
         index += 1
         return "comp"
-            
-
 
 def check_health(user_health, user_points):
     if user_health <= 0:
@@ -106,15 +117,12 @@ def check_health(user_health, user_points):
         return "lost"
     return "cont"
 
-
-
 def check_score(user, user_points, game):
     if user_points > user["scores"][game]:
         return "greater"
     else:
         return "less"
     
-
 def display_leaderboard(users, type_game):
     usrscores = {}
 
@@ -131,7 +139,10 @@ def display_leaderboard(users, type_game):
 
     print(f"Top 10 scores for {type_game}")
     for i in range(10):
-        print(f"{usernames[i]}: {scores[i]}")
+        try:
+            print(f"{usernames[i]}: {scores[i]}")
+        except:
+            print(f"{i}. There is no user in this spot.")
 
 """test_users = [
     {"username":"OMORI", "password":"Wh!tesp@c3", "scores":{"easy arithmetic score":19, "easy guessing score":1, "hard arithmetic score":13, "hard guessing score":5, "tictactoe score":6, "rock paper scissors":100}},

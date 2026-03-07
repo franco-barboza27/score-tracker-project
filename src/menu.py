@@ -1,7 +1,6 @@
 #simple main menu
 
 from math_games import arithmetic_game, num_guessing
-from main import mainplace
 from rps import rps_game
 from tictactoe import play_ttt
 import helpers
@@ -22,9 +21,21 @@ def mainmenu(user, users):
                 case 4:
                     rps_game()
                 case 5:
-                    helpers.display_leaderboard()
+                    games = ["easy arithmetic score", "easy guessing score", "hard arithmetic score", "hard guessing score", "rock paper scissors score"]
+                    gamedict = {}
+                    count = 1
+                    for game in games:
+                        print(f"{count}. {game}")
+                        gamedict[count] = game
+                        count += 1
+                    gametype = helpers.inputchecker(5)
+                    for key in gamedict:
+                        if key == gametype:
+                            gametype = gamedict[key]
+                            break
+                    
+                    helpers.display_leaderboard(users, gametype)
                 case 6:
-                    mainplace()
-                    break
+                    return users
         except ValueError:
             print("That ain't something you can do!")

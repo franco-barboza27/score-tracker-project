@@ -1,7 +1,6 @@
 import csv
 import pathlib
 
-
 def usersave(users):
     basepath = pathlib.Path(__file__).resolve().parent
     filepath = basepath.parent / 'resources' / 'users.csv'
@@ -22,15 +21,16 @@ def scoresave(users):
     filepath = basepath.parent / 'resources' / 'userscores.csv'
 
     with open(filepath, mode="w") as csv_file:
-        writer = csv.DictWriter(csv_file, fieldnames = ["username", "easy arithmetic score", "easy guessing score", "hard arithmetic score", "hard guessing score", "tic tac toe score", "rock paper scissors"], delimiter=",")
-        heading = ["easy arithmetic score", "easy guessing score", "hard arithmetic score", "hard guessing score", "tic tac toe score", "rock paper scissors"]
-        writer.writeheader("easy arithmetic score", "easy guessing score", "hard arithmetic score", "hard guessing score", "tic tac toe score", "rock paper scissors")
+        writer = csv.DictWriter(csv_file, fieldnames = ["easy arithmetic score", "easy guessing score", "hard arithmetic score", "hard guessing score", "rock paper scissors score"], delimiter=",")
+        heading = ["easy arithmetic score", "easy guessing score", "hard arithmetic score", "hard guessing score", "rock paper scissors score"]
+        writer.writeheader()
         # writer.writerow(file, )
         
         for user in users:
-            keylings = list(user.keys())
-            value = list(user.values())
-            writer.writerow({keylings[0]:value[0], keylings[1]:value[1], keylings[2]: value[2], keylings[3]: value[3], keylings[4]: value[4], keylings[5]: value[5], keylings[6]: value[6]})
+            keylings = list(user["scores"].keys())
+            value = list(user["scores"].values())
+
+            writer.writerow({keylings[0]:value[0], keylings[1]:value[1], keylings[2]: value[2], keylings[3]: value[3], keylings[4]: value[4]})
 
 def userget():
     basepath = pathlib.Path(__file__).resolve().parent
@@ -51,41 +51,48 @@ def userget():
 
                         thisuser = line[0]
                         thispassword = line[1]
-                        books[-1]["username"] = thisuser
-                        books[-1]["password"] = thispassword
+                        users[-1]["username"] = thisuser
+                        users[-1]["password"] = thispassword
 
     except:
-        books = [{"username":"this is the base user", "password":"12345678910"}]
+        users = [{"username":"this is the base user", "password":"12345678910"}]
     
-    return books
+    return users
 
-def scoreget():
+def scoreget(users):
     basepath = pathlib.Path(__file__).resolve().parent
     filepath = basepath.parent / 'resources' / 'userscores.csv'
     try:
         with open(filepath, mode="r") as file:
 
-            books = []
+            scorings = []
             reader = csv.reader(file)
 
             for line in file:
                 for line in reader:
 
                     if line:
-                        books.append({})
                         # "easy arithmetic score", "easy guessing score", "hard arithmetic score", "hard guessing score", "tic tac toe score", "rock paper scissors"
+                        scorings.append({})
 
-                        thisusername = line[0]
-                        thisauthor = line[1]
-                        thisyear = line[2]
-                        thisgenre = line[3]
+                        thiseasyarith = line[0]
+                        thiseasyguess = line[1]
+                        thishardarith = line[2]
+                        thishardguess = line[3]
+                        thisrockpaper = line[4]
 
-                        books[-1]["title"] = thisbook
-                        books[-1]["author"] = thisauthor
-                        books[-1]["year"] = thisyear
-                        books[-1]["genre"] = thisgenre
-
+                        scorings[-1]["easy arithmetic score"] = thiseasyarith
+                        scorings[-1]["easy guessing score"] = thiseasyguess
+                        scorings[-1]["hard arithmetic score"] = thishardarith
+                        scorings[-1]["hard guessing score"] = thishardguess
+                        scorings[-1]["rock paper scissors score"] = thisrockpaper
     except:
-        books = [{"title":"title example", "author":"example author", "year":1843, "genre":"genre example"}]
+        scorings = {"easy arithmetic score":0, "easy guessing score":999, "hard arithmetic score":0, "hard guessing score":999, "rock paper scissors score":0}
     
-    return books
+    count = 0
+    for user in users:
+
+        user["scores"] = scorings[count]
+        
+        count += 1
+    return users
