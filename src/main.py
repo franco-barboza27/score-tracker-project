@@ -1,4 +1,6 @@
-import csvsetup, helpers, usermanager
+import csvsetup
+import helpers
+from login_signup import login, signup
 import sys
 
 def mainplace(userbase):
@@ -8,18 +10,19 @@ def mainplace(userbase):
 
     while True:
 
-        choice = int(input("You may:\n1. Login\n2. Sign Up:\n3. Leave the program"))
+        print("You may:\n1. Login\n2. Sign Up:\n3. Leave the program")
+        choice = helpers.inputchecker(3)
 
         if choice == 1:
-            usermanager.login(userbase)
+            login(userbase)
         elif choice == 2:
-            usermanager.signup(userbase)
+            signup(userbase)
         else:
             csvsetup.usersave(userbase)
             csvsetup.scoresave(userbase)
             sys.exit()
 
 users = csvsetup.userget()
-users["scores"] = csvsetup.scoreget()
+users = csvsetup.scoreget(users)
 
 mainplace(users)

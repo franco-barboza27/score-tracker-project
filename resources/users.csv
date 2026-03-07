@@ -1,1 +1,6 @@
-username, hashingcode, hashedpassword
+username,password
+OMORI, Wh!tesp@c3
+AUBREY, 3ggplant
+Userguy120338,<sha256 _hashlib.HASH object @ 0x100f285f0>
+gummy,<sha256 _hashlib.HASH object @ 0x1039285f0>
+user,<sha256 _hashlib.HASH object @ 0x102977430>

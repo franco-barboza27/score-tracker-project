@@ -10,7 +10,6 @@ def print_board():
         if i < 6:
             print("---------------")
 
-        
 def win_conditions(any_letter):
     win_conds = [(0,1,2), (3,4,5), (6,7,8), (0,3,6), (1,4,7), (2,5,8), (0,4,8), (2,4,6)]
     for c in win_conds:
@@ -75,4 +74,3 @@ def play():
         except ValueError:
             print("That ain't somewhere you can place!")
     scores(letter, comp_letter, score)
-play()
