@@ -3,7 +3,7 @@
 from math_games import arithmetic_game, num_guessing
 from main import mainplace
 from rps import rps_game
-from tictactoe import play
+from tictactoe import play_ttt
 import helpers
 
 def mainmenu(user, users):
@@ -18,7 +18,7 @@ def mainmenu(user, users):
                 case 2:
                     num_guessing()
                 case 3:
-                    play()
+                    play_ttt()
                 case 4:
                     rps_game()
                 case 5:
