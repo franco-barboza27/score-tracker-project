@@ -16,6 +16,7 @@ def inputchecker(rangeofchoices):
            
     return choicevar
 
+
 def check_password(password):
     print("\nLet's check the strength of your password. (NOTE: In order for your password to be accepted, it needs ot recieve a strength score of 5.)")
     score = 0
@@ -74,6 +75,7 @@ def check_password(password):
         print("Your password is very strong!!! Good job :D")
         return True
 
+
 def rps_results(user_play, comp_play, graphics):
     index = 0
     p_str = ""
@@ -110,6 +112,7 @@ def rps_results(user_play, comp_play, graphics):
         index += 1
         return "comp"
 
+
 def check_health(user_health, user_points):
     if user_health <= 0:
         print("Game over!")
@@ -117,11 +120,13 @@ def check_health(user_health, user_points):
         return "lost"
     return "cont"
 
+
 def check_score(user, user_points, game):
     if user_points > user["scores"][game]:
         return "greater"
     else:
         return "less"
+    
     
 def display_leaderboard(users, type_game):
     usrscores = {}

@@ -42,6 +42,7 @@ def scores(pletter, cletter, sc):
 def play_ttt():
     score = 0
     print("Welcome to Tic-Tac-Toe!")
+    print("This is standard Tic-Tac-Toe, and you will play against a computer. There is no scoring system in this game. \nGood luck!")
     letter = input("What is the letter that you want to be?\nIt can be X or O, but it could also be anything else\nType Here:   ")
     comp_letter = input("What is the letter that you would like the computer to be?\n Type Here:   ")
     print_board()
