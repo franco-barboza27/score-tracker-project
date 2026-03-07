@@ -53,6 +53,6 @@ def rps_game(user):
 
     continue_game = helpers.check_health(user_lives)
     if continue_game == "lost":
-      if user_score > user["scores"]["rock paper scissors"]:
-        user["scores"].update({"rock paper scissors": user_score})
+      if user_score > user["scores"]["rock paper scissors score"]:
+        user["scores"].update({"rock paper scissors score": user_score})
         return user
