@@ -1,6 +1,7 @@
 import hashlib
 import helpers
 import menu
+import time
 
 
 def signup(users):
@@ -9,7 +10,7 @@ def signup(users):
     checker = True
   
     while checker:
-        username = input("What will your username be?")
+        username = input("\nWhat will your username be?: ")
         if users:
             for user in users:
                 if len(username) <=3:
@@ -30,10 +31,10 @@ def signup(users):
             valid.append(True)
             checker = False
 
-
+    print("NOTE: In order for your password to be accepted, it needs to recieve a strength score of 5.")
     while True:
         while True:
-            password = input("What will your password be?")
+            password = input("\nWhat will your password be?: ")
             check = helpers.check_password(password)
             if check == True:
                 break
@@ -56,8 +57,8 @@ def signup(users):
       
 def login(users):
 
-   username = input("What is your username?")
-   password = input("What is your password?")
+   username = input("What is your username?: ")
+   password = input("What is your password?: ")
 
 
    for user in users:
@@ -69,7 +70,8 @@ def login(users):
 
 
            if user["password"] == passing:
-               print("Successfully logging you in!")
+               print("\nSuccessfully logging you in!")
                menu.mainmenu(user, users)
+               time.sleep(0.5)
   
-   print("Unfortunately, either your password or your username are wrong")
+   print("\nUnfortunately, either your password or your username are wrong.")
