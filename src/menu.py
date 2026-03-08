@@ -4,7 +4,7 @@ from rps import rps_game
 from tictactoe import play_ttt
 import helpers
 
-def mainmenu(users):
+def mainmenu(user, users):
     print("\nWelcome to the High Score Tracker!\nWhere you can play games such as tic-tac-toe, and much more!\nOnce you're done, you can check your score, and try to beat it!")
     while True:
         try:

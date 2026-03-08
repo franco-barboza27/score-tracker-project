@@ -102,14 +102,14 @@ def rps_results(user_play, comp_play, graphics):
     
     elif user_to_comp in possible_combinations:
         while index < len(graphics["you_win"]):
-            print(graphics["r"][index] + "   " + graphics["you_win"][index])
-        index += 1
+            print(graphics[user_play][index] + "   " + graphics["you_win"][index])
+            index += 1
         return "user"
 
     elif comp_to_user in possible_combinations:
         while index < len(graphics["you_lose"]):
             print(graphics["dead_"+user_play][index] + "   " + graphics["you_lose"][index])
-        index += 1
+            index += 1
         return "comp"
 
 
