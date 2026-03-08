@@ -38,29 +38,29 @@ def play_ttt():
     print_board()
     while True:
         try:
-            placement = int(input("Now, where would you like to play?\nType Here:   "))
+            placement = int(input("\nNow, where would you like to play?\nType Here:   "))
             if placement in range(9) and isinstance(board[placement], int):
                 board[placement] = letter
                 print_board()
 
                 if win_conditions(letter):
-                    print("Elite! You won against the computer!")
+                    print("\nElite! You won against the computer!")
                     break
 
                 if tie():
-                    print("You tied! At least you didn't lose!")
+                    print("\nYou tied! At least you didn't lose!")
                     break
                 print("Now it is the computer's turn!")
                 computer(comp_letter)
 
                 if win_conditions(comp_letter):
-                    print("The computer won! You lose!")
+                    print("\nThe computer won! You lose!")
                     break
 
                 if tie():
-                    print("You tied with the computer!")
+                    print("\nYou tied with the computer!")
                     break
             else:
-                print("That ain't somewhere you can place bruh!")
+                print("\nThat ain't somewhere you can place bruh!")
         except ValueError:
-            print("That ain't somewhere you can place!")
+            print("\nThat ain't somewhere you can place!")

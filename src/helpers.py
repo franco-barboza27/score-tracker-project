@@ -18,11 +18,11 @@ def inputchecker(rangeofchoices):
 
 
 def check_password(password):
-    print("\nLet's check the strength of your password. (NOTE: In order for your password to be accepted, it needs ot recieve a strength score of 5.)")
+    print("\nLet's check the strength of your password.")
     score = 0
 
     print("Checking password now...\n")
-    time.sleep(0.5)
+    time.sleep(1)
 
     if len(password) >= 8:
         score += 1
@@ -30,6 +30,7 @@ def check_password(password):
     else:
         print("Your password is not long enough.")
 
+    time.sleep(0.5)
 
     if re.findall("[A-Z]", password):
         score += 1
@@ -37,6 +38,7 @@ def check_password(password):
     else:
         print("Your password does not have an uppercase letter.")
 
+    time.sleep(0.5)
 
     if re.findall("[a-z]", password):
         print("Your password has a lower case letter.")
@@ -44,6 +46,7 @@ def check_password(password):
     else:
         print("Your password does not have a lower case letter.")
     
+    time.sleep(0.5)
 
     if re.findall("[0-9]", password):
         print("Your password has a number.")
@@ -51,6 +54,7 @@ def check_password(password):
     else:
         print("Your password does not have number.")
 
+    time.sleep(0.5)
 
     if re.findall("[-!@#$%^&*(){}_+=|\\:;?/>.<,`~]", password) or "[" in password or "]" in password:
         print("Your password has a special character!")
@@ -58,11 +62,13 @@ def check_password(password):
     else:
         print("Your password does NOT have a special characters.")
 
+    time.sleep(1)
+
     print(f"\nYou have a password strength score of {score}.\n")
 
     # tell them what the numbers mean
     if score == 0:
-        print("Your password is exetremely weak, wait.... it doesn't even exist basically")
+        print("Your password is extremely weak, wait.... it doesn't even exist basically")
     elif score == 1:
         print("Your password is very weak.")
     elif score == 2:
@@ -142,7 +148,7 @@ def display_leaderboard(users, type_game):
     usernames = list(usrscores.keys())
     scores = list(usrscores.values())
 
-    print(f"Top 10 scores for {type_game}")
+    print(f"\nTop 10 scores for {type_game}:")
     for i in range(10):
         try:
             print(f"{i + 1}. {usernames[i]}: {scores[i]}")
